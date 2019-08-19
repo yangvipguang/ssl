@@ -16,3 +16,11 @@ add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; prelo
 add_header X-Frame-Options DENY;
 add_header X-Content-Type-Options nosniff;
 add_header X-XSS-Protection "1; mode=block";
+
+
+
+HTTP ——> HTTPS
+return 301 https://$host$request_uri;             # 永久重定向
+rewrite ^  https://$host$request_uri permanent;   # 永久重定向
+add_header Strict-Transport-Security max-age=15768000; #182.5days
+
